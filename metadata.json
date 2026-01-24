@@ -1,0 +1,7 @@
+{
+  "name": "Moallem - معلم",
+  "description": "أداة ذكية لتحويل الملاحظات الصوتية إلى تقارير حصص تعليمية احترافية بتنسيق واتساب.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
