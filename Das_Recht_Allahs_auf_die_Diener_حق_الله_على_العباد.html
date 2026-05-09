@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Das Recht Allahs auf die Diener - حق الله على العباد</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c0392b; /* Red */
+            --secondary: #27ae60; /* Green */
+            --accent1: #2980b9; /* Blue */
+            --accent2: #f39c12; /* Orange */
+            --bg-color: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e0e5ec;
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-dark);
+            counter-reset: page;
+        }
+
+        .arabic-text {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            text-align: right;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #1a252f;
+        }
+
+        .quran-text {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .hadith-text {
+            color: var(--accent1);
+            font-weight: 700;
+        }
+
+        /* A4 Page Setup */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            box-sizing: border-box;
+            padding: 20mm;
+            overflow: hidden;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10h80v80h-80z" fill="none" stroke="%23f1f2f6" stroke-width="1"/></svg>');
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 10mm;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+        
+        .page-number::before {
+            counter-increment: page;
+            content: "Seite " counter(page);
+        }
+
+        /* Header */
+        .main-title {
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-title .arabic { font-family: 'Cairo', sans-serif; font-size: 1.8rem; }
+
+        /* Ribbons & Cards */
+        .card {
+            background: white;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            break-inside: avoid;
+        }
+
+        .ribbon-header {
+            position: relative;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: -25px 0 15px -30px;
+            display: inline-block;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        .ribbon-red { background: var(--primary); }
+        .ribbon-green { background: var(--secondary); }
+        .ribbon-blue { background: var(--accent1); }
+        .ribbon-orange { background: var(--accent2); }
+
+        .ribbon-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            border-width: 10px 10px 0 0;
+            border-style: solid;
+            border-color: rgba(0,0,0,0.5) transparent transparent transparent;
+        }
+
+        /* Numbered List styling */
+        .num-badge {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            background: #fdfbfb;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary);
+            break-inside: avoid;
+        }
+
+        /* Quotes & Definitions */
+        .quote-box {
+            background: #fff3e0;
+            border-right: 5px solid var(--accent2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Footer / Branding */
+        .branding-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #bdc3c7;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #34495e;
+            break-inside: avoid;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            text-decoration: none;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        .bg-wa { background: #25D366; }
+        .bg-fb { background: #1877F2; }
+        .bg-ig { background: #E1306C; }
+        .bg-tag { background: #34495e; }
+
+        /* Print Settings */
+        @media print {
+            body { background: none; }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                page-break-after: always;
+            }
+            /* Hide URL links in print */
+            a[href]::after { content: ""; }
+        }
+
+        h3 { color: var(--text-dark); margin-top: 0; }
+        p { line-height: 1.6; margin-bottom: 10px; }
+        .highlight { font-weight: 900; color: var(--primary); }
+
+        /* Activity section */
+        .activity-box {
+            background: #ffeaa7;
+            border: 3px dashed #fdcb6e;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= PAGE 1 ================= -->
+    <div class="page">
+        <div class="main-title">
+            <span class="arabic">حق الله على العباد</span>
+            <span>Das wichtigste Recht: Allahs Recht auf Seine Diener</span>
+        </div>
+
+        <div class="card">
+            <div class="ribbon-header ribbon-red">Warum ist das so wichtig?</div>
+            <div class="arabic-text">معرفة حقوق الله تعالى على عباده أوجب الواجبات وأعظمها.</div>
+            <p>Zu wissen, welche Rechte Allah über uns hat, ist die größte und wichtigste Pflicht. Es ist der Grund, warum der Mensch überhaupt erschaffen wurde!</p>
+            <p>Das größte Recht Allahs ist es, <strong>Ihn allein anzubeten</strong> und Ihm keine Partner zur Seite zu stellen (Kein Schirk).</p>
+        </div>
+
+        <div class="card">
+            <div class="ribbon-header ribbon-green">Beweise aus dem Quran & Sunnah</div>
+            <div class="arabic-text quran-text">﴿ وَاعْبُدُوا اللَّهَ وَلَا تُشْرِكُوا بِهِ شَيْئًا ﴾</div>
+            <p><strong>Allah sagt:</strong> "Und dient Allah und gesellt Ihm nichts bei." (Sure An-Nisa: 36).</p>
+
+            <div class="arabic-text hadith-text">«يا معاذ، أتدري ما حق الله على العباد؟»</div>
+            <p><strong>Der Prophet ﷺ fragte Mu'adh:</strong> "O Mu'adh, weißt du, was das Recht Allahs auf die Diener ist?"... Der Prophet sagte: "Dass sie Ihn anbeten und Ihm nichts beigesellen."</p>
+        </div>
+
+        <div class="card">
+            <div class="ribbon-header ribbon-blue">Was bedeutet "Anbetung" (Ibadah)?</div>
+            <div class="arabic-text">العبادة: اسم جامع لكل ما يحبه الله ويرضاه من الأقوال والأعمال الباطنة والظاهرة.</div>
+            <p><strong>Die einfache Bedeutung:</strong> Unterwerfung und Gehorsamkeit.</p>
+            <p><strong>Die islamische Definition (Ibn Taymiyyah):</strong> "Es ist ein umfassender Begriff für alles, was Allah liebt und womit Er zufrieden ist, seien es Worte oder Taten, ob sie im Verborgenen (im Herzen) oder offen (sichtbar) geschehen."</p>
+        </div>
+        <div class="page-number"></div>
+    </div>
+
+    <!-- ================= PAGE 2 ================= -->
+    <div class="page">
+        <h2 style="color: var(--primary); text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px;">
+            <span class="arabic" style="display:block;">تتمثل حقوق الله في الآتي:</span>
+            Wie erfüllen wir Allahs Rechte?
+        </h2>
+
+        <div class="list-item">
+            <div class="num-badge" style="background: #16a085;">1</div>
+            <div>
+                <div class="arabic-text">الإيمان به سبحانه وتعالى</div>
+                <h3>Der feste Glaube an Ihn</h3>
+                <p>An Allah und Seinen Gesandten zu glauben. Wie Allah sagt:</p>
+                <div class="arabic-text quran-text" style="font-size: 1rem;">﴿ ءَامِنُوا بِاللَّهِ وَرَسُولِهِ ﴾</div>
+                <p><em>"Glaubt an Allah und Seinen Gesandten..."</em> (Sure Al-Hadid: 7)</p>
+            </div>
+        </div>
+
+        <div class="list-item">
+            <div class="num-badge" style="background: #e67e22;">2</div>
+            <div>
+                <div class="arabic-text">عبادته وحده لا شريك له</div>
+                <h3>Ihn allein anbeten (Tawhid)</h3>
+                <p>Niemanden neben Allah anzubeten. Er hat uns nur dafür erschaffen.</p>
+                <div class="arabic-text quran-text" style="font-size: 1rem;">﴿ وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ ﴾</div>
+                <p><em>"Und Ich habe die Dschinn und die Menschen nur darum erschaffen, damit sie Mir dienen."</em> (Sure Adh-Dhariyat: 56)</p>
+            </div>
+        </div>
+
+        <div class="list-item">
+            <div class="num-badge" style="background: #c0392b;">3</div>
+            <div>
+                <div class="arabic-text">الإيمان بأسمائه وصفاته</div>
+                <h3>Glaube an Seine Namen und Eigenschaften</h3>
+                <p>Wir glauben an das, was im Quran und in der Sunnah steht, so wie es die ersten frommen Generationen (Salaf) verstanden haben. Allah ist vollkommen und nichts ist Ihm gleich.</p>
+                <div class="arabic-text quran-text" style="font-size: 1rem;">﴿ لَيْسَ كَمِثْلِهِ شَيْءٌ ۖ وَهُوَ السَّمِيعُ الْبَصِيرُ ﴾</div>
+                <p><em>"Nichts ist Ihm gleich; und Er ist der Allhörende, der Allsehende."</em> (Sure Ash-Shura: 11)</p>
+            </div>
+        </div>
+
+        <div class="list-item">
+            <div class="num-badge" style="background: #2980b9;">4</div>
+            <div>
+                <div class="arabic-text">تعظيم الله وتوقيره</div>
+                <h3>Allah ehren und respektieren</h3>
+                <p>Dass wir wissen, wie großartig Allah ist und Ihn entsprechend ehren.</p>
+                <div class="arabic-text quran-text" style="font-size: 1rem;">﴿ مَّا لَكُمْ لَا تَرْجُونَ لِلَّهِ وَقَارًا ﴾</div>
+                <p><em>"Was ist mit euch, dass ihr Allahs Größe nicht ehrt?"</em> (Sure Nuh: 13)</p>
+            </div>
+        </div>
+        <div class="page-number"></div>
+    </div>
+
+    <!-- ================= PAGE 3 ================= -->
+    <div class="page">
+        <h2 style="color: var(--secondary); text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px;">
+            <span class="arabic" style="display:block;">ومن صور تعظيم الله:</span>
+            Beispiele, wie wir Allah ehren
+        </h2>
+
+        <div class="card" style="border-left: 5px solid var(--secondary);">
+            <div class="arabic-text">1. تعظيم حرمات الله (فَيَجْتَنِبُهَا)</div>
+            <h3>1. Seine Grenzen respektieren</h3>
+            <p>Indem wir Sünden meiden und uns von dem fernhalten, was Allah verboten hat.</p>
+        </div>
+
+        <div class="card" style="border-left: 5px solid var(--secondary);">
+            <div class="arabic-text">2. تعظيم شعائر الله</div>
+            <h3>2. Die Riten Allahs ehren</h3>
+            <p>Dazu gehört der Respekt vor Gebeten, dem Opferfest, dem Adhan usw. Das zeigt die Frömmigkeit (Taqwa) im Herzen.</p>
+        </div>
+
+        <div class="card" style="border-left: 5px solid var(--secondary);">
+            <div class="arabic-text">3. إكرام أهل طاعته وإجلالهم</div>
+            <h3>3. Gehorsame Menschen respektieren</h3>
+            <p>Es gehört zur Ehrung Allahs, dass man ältere Muslime, Gelehrte (die den Quran kennen und danach handeln) und gerechte Herrscher respektiert.</p>
+        </div>
+
+        <h2 style="color: var(--primary); text-align: center; margin-top: 40px;">
+            <span class="arabic" style="display:block;">ومن حقوق الله تعالى:</span>
+            Weitere wichtige Rechte
+        </h2>
+
+        <div class="list-item" style="border-color: #8e44ad;">
+            <div class="num-badge" style="background: #8e44ad;">✓</div>
+            <div>
+                <div class="arabic-text">الحياء من الله وخشيته في السر والعلن</div>
+                <h3>Schamgefühl (Hayaa) und Gottesfurcht</h3>
+                <p>Man sollte sich vor Allah schämen, Sünden zu begehen, egal ob man alleine ist oder vor Menschen. Allah sieht alles.</p>
+            </div>
+        </div>
+
+        <div class="list-item" style="border-color: #8e44ad;">
+            <div class="num-badge" style="background: #8e44ad;">✓</div>
+            <div>
+                <div class="arabic-text">الخضوع لحكم الله وتطبيق شرعه</div>
+                <h3>Sich Seinem Urteil fügen</h3>
+                <p>Wenn Allah und Sein Prophet ﷺ etwas entschieden haben, haben wir als Gläubige keine andere Wahl, als dies zu akzeptieren und umzusetzen.</p>
+            </div>
+        </div>
+        <div class="page-number"></div>
+    </div>
+
+    <!-- ================= PAGE 4 ================= -->
+    <div class="page">
+        <h2 style="color: var(--accent1); text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px;">
+            Was wir noch für Allah tun müssen
+        </h2>
+
+        <div class="card">
+            <div class="ribbon-header ribbon-red">Die Liebe zu Allah</div>
+            <div class="arabic-text">محبة الله سبحانه وتعالى</div>
+            <p>Allah und Sein Prophet müssen uns lieber sein als alles andere. Wer das erreicht, spürt die <strong>"Süße des Glaubens"</strong>.</p>
+            <div class="quote-box">Ibn al-Qayyim sagte: "Die Liebe in der Anbetung ist die reinste und edelste Liebe, und sie ist ein reines Recht Allahs."</div>
+        </div>
+
+        <div class="card">
+            <div class="ribbon-header ribbon-green">Gedenken & Dankbarkeit</div>
+            <div class="arabic-text">المداومة على ذكر الله وشكره</div>
+            <p>Ständig an Allah denken (Dhikr) und dankbar für Seine vielen Gaben sein, ohne sie zu leugnen.</p>
+        </div>
+
+        <div class="card">
+            <div class="ribbon-header ribbon-blue">Zufriedenheit (Rida)</div>
+            <div class="arabic-text">الرضا بالله رباً، وبالإسلام ديناً، وبمحمد رسولاً</div>
+            <p>Vollkommen zufrieden damit zu sein, dass Allah unser Herr ist, der Islam unsere Religion ist und Muhammad ﷺ unser Prophet ist.</p>
+        </div>
+
+        <div class="card">
+            <div class="ribbon-header ribbon-orange">Reue & Vergebung</div>
+            <div class="arabic-text">دوام الاستغفار والتوبة</div>
+            <p>Jeder Mensch macht Fehler. Deshalb müssen wir Allah immer um Vergebung bitten (Istighfar) und aufrichtig bereuen (Tawbah).</p>
+            <div class="quote-box">Imam an-Nawawi sagte: "Wisse, dass jeder, der eine Sünde begeht, sich beeilen muss, sie zu bereuen. Die Reue ist ein Recht Allahs."</div>
+        </div>
+
+        <div class="card">
+            <div class="ribbon-header" style="background: #2c3e50;">Gutes von Allah erwarten</div>
+            <div class="arabic-text">إحسان الظن بالله</div>
+            <p>Man muss immer gut über Allah denken und auf Seine Gnade hoffen, besonders am Ende des Lebens.</p>
+        </div>
+        <div class="page-number"></div>
+    </div>
+
+    <!-- ================= PAGE 5 ================= -->
+    <div class="page">
+        <h2 style="color: var(--text-dark); text-align: center;">
+            <span class="arabic" style="display:block; color:var(--primary);">من فوائد معرفة حقوق الله</span>
+            Die Vorteile: Warum lernen wir das?
+        </h2>
+
+        <div class="card" style="background: #f8f9fa;">
+            <ul style="list-style-type: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 10px;">🛡️ <strong>Schutz vor Arroganz:</strong> Es reinigt den Menschen von Hochmut und Selbstbewunderung.</li>
+                <li style="margin-bottom: 10px;">❤️ <strong>Demut:</strong> Es bringt das Herz dazu, sich Allah bescheiden und demütig zu unterwerfen.</li>
+                <li style="margin-bottom: 10px;">🤲 <strong>Hoffnung:</strong> Das Herz bindet sich fest an Allah und hofft auf Seine Barmherzigkeit.</li>
+                <li style="margin-bottom: 10px;">💎 <strong>Aufrichtigkeit (Ikhlas):</strong> Man bemüht sich, seine Taten nur für Allah zu machen und sie zu verbessern.</li>
+                <li style="margin-bottom: 10px;">🥺 <strong>Scham:</strong> Man erkennt die eigenen Fehler und schämt sich für seine Unzulänglichkeiten vor Allah.</li>
+                <li style="margin-bottom: 10px;">✨ <strong>Reichtum der Seele:</strong> Wer Allahs Rechte erfüllt, den macht Allah unabhängig von den Menschen.</li>
+            </ul>
+        </div>
+
+        <div class="activity-box">
+            <h3 style="color: #d35400; text-align: center; font-size: 1.5rem;">
+                <span class="arabic" style="display:block;">نشاط (Aktivität - Teste dein Wissen!)</span>
+            </h3>
+            <ol style="font-weight: bold; line-height: 1.8;">
+                <li style="margin-bottom: 15px;">
+                    <div class="arabic-text" style="font-size: 1rem; font-weight:normal;">من حقوق الله عبادته وحده لا شريك له، اذكر ما يدل على ذلك؟</div>
+                    Zu Allahs Rechten gehört, Ihn allein ohne Partner anzubeten. Nenne einen Beweis dafür!
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <div class="arabic-text" style="font-size: 1rem; font-weight:normal;">الأصل في الإنسان التقصير في حقوق الله، اذكر طرقاً في علاج ذلك؟</div>
+                    Der Mensch macht von Natur aus Fehler bei der Erfüllung der Rechte Allahs. Wie kann man das heilen/verbessern?
+                </li>
+                <li>
+                    <div class="arabic-text" style="font-size: 1rem; font-weight:normal;">مات إنسان وعليه ديون للآخرين، وقبل موته كان مستطيعاً للحج ولم يحج، فأيهما يقدّم: أن يحج عنه، أم تسدد ديونه؟</div>
+                    <em>Zum Nachdenken (Fiqh):</em> Jemand stirbt und hat Schulden bei anderen. Er war gesund und reich genug für den Hajj, hat ihn aber nicht gemacht. Was muss zuerst von seinem Geld bezahlt werden: Ein stellvertretender Hajj oder die Schulden bei den Menschen?
+                </li>
+            </ol>
+        </div>
+
+        <!-- Branding Footer -->
+        <div class="branding-footer">
+            <div style="font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">Erstellt für den islamischen Unterricht (Deutsch/Arabisch)</div>
+            <div>Dozent: Mohamed Hafez</div>
+            
+            <div class="social-links">
+                <span class="bg-tag">#SoLasDerProphet</span>
+                <a href="https://facebook.com/Mohamadhavez" class="bg-fb">Facebook</a>
+                <a href="https://instagram.com/muhamadhavez" class="bg-ig">Instagram</a>
+                <a href="https://wa.me/201030393168" class="bg-wa">WhatsApp: +20 103 039 3168</a>
+            </div>
+        </div>
+        <div class="page-number"></div>
+    </div>
+
+</body>
+</html>
